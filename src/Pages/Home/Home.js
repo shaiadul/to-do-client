@@ -28,7 +28,6 @@ const Home = () => {
             {/* indicator array */}
             <img className='w-11' src={down} alt="" />
             {/* latest to do data adding section */}
-
         </div>
     );
 };
