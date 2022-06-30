@@ -1,7 +1,15 @@
 import React from 'react';
+import useList from '../../Hooks/useList';
 import down from '../../images/down-arrow-svgrepo-com.svg'
 
 const Home = () => {
+
+    const [lists, setLists] = useList([]);
+    // time Refresh 
+    function timedRefresh(timeoutPeriod) {
+        setTimeout("location.reload(true);", timeoutPeriod);
+    }
+    // handlekeyDown
     const handleKeyDown = (event) => {
         const value = event.target.value
         const data = { value }
@@ -17,8 +25,8 @@ const Home = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log('success', data);
-                    // event.target.reset();
                 })
+            window.onload = timedRefresh(1000)
         }
     }
     return (
@@ -28,6 +36,19 @@ const Home = () => {
             {/* indicator array */}
             <img className='w-11' src={down} alt="" />
             {/* latest to do data adding section */}
+            {
+                lists.slice(-1).map(l => <>
+                    <div>
+                        <div class="flex items-center mb-4 border-b-4">
+                            <input className='' type="checkbox" name="checkbox" id="all" />
+                                <label for="all" class="ml-2 text-xl font-bold font-serif text-gray-700 ">{l.value}</label>
+                                {/* edit and delete button */}
+                                <button>x</button><button>y</button>
+                        </div>
+                    </div>
+                    {/* {l.value} */}
+                </>)
+            }
         </div>
     );
 };
