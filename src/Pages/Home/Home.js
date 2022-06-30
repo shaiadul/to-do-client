@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useList from '../../Hooks/useList';
-import down from '../../images/down-arrow-svgrepo-com.svg'
+import down from '../../images/down-arrow-svgrepo-com.svg';
+import "./Home.css"
+
 
 const Home = () => {
 
@@ -29,6 +32,31 @@ const Home = () => {
             window.onload = timedRefresh(1000)
         }
     }
+    // heandleDeleteProduct
+    const handleDeleteProduct = id =>{
+        const proceed = window.confirm('Sir, Are you sure ?')
+        if(proceed){
+            console.log('deleted',id);
+            const url = `http://localhost:5000/list/${id}`;
+            fetch(url,{
+                method: 'DELETE',
+                headers : { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                   }
+            })
+            .then(res => res.json())
+            .then(data =>{
+                if(data.deletedCount > 0){
+                    const remaining =lists.filter(list => list._id !== id);
+                    setLists(remaining);
+                   
+                }
+            })
+            
+        }
+    }
+ 
     return (
         <div className="relative flex flex-col items-center max-w-lg gap-4 p-6 rounded-md sm:py-8 sm:px-12 bg-emerald-400 dark:text-gray-100 mx-2 lg:mx-auto my-32 shadow-2xl">
             {/* input for takeing what to do you ! */}
@@ -37,17 +65,19 @@ const Home = () => {
             <img className='w-11' src={down} alt="" />
             {/* latest to do data adding section */}
             {
-                lists.slice(-1).map(l => <>
-                    <div>
-                        <div class="flex items-center mb-4 border-b-4">
+                lists.slice(-1).map(l => 
+                    
+                        <div key={l._id} className="flex items-center mb-4 border-b-4 border-red-200 pb-1">
                             <input className='' type="checkbox" name="checkbox" id="all" />
-                                <label for="all" class="ml-2 text-xl font-bold font-serif text-gray-700 ">{l.value}</label>
-                                {/* edit and delete button */}
-                                <button>x</button><button>y</button>
+                            <label htmlFor="all" className="ml-2 text-lg lg:text-lg font-bold font-serif text-gray-700 ">{l.value}</label>
+                            {/* edit and delete button */}
+                            <Link to={`/update/${l._id}`} className='to-btn bg-gray-700 px-5 font-bold font-serif text-slate-400 mx-2 hover:bg-opacity-70'>Edit</Link>
+                            <button
+                            onClick={()=>handleDeleteProduct(l._id)}
+                             className='to-btn bg-red-500 px-4 font-bold font-serif text-slate-400 mx-2 hover:bg-opacity-70'>Delete</button>
                         </div>
-                    </div>
-                    {/* {l.value} */}
-                </>)
+                    
+                )
             }
         </div>
     );
