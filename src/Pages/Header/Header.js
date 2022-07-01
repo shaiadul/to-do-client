@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Header.css"
+import home from "../../images/home01.svg"
+
 const Header = () => {
     return (
         <header className="text-gray-600 body-font bg-emerald-400 shadow-2xl">
@@ -11,9 +13,10 @@ const Header = () => {
                     </Link>
                 </Link>
                 <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                    <Link to="todo" className="mr-5 text-black text-2xl font-serif hover:text-red-400">to-do</Link>
-                    <Link to="#" className="mr-5 text-black text-2xl font-serif hover:text-red-400">Complete</Link>
-                    <Link to="calendar" className="mr-5 text-black text-2xl font-serif hover:text-red-400">Calendar</Link>
+                    <Link to="home" className="mr-5"><img className='w-8' src={home} alt="" /></Link>
+                    <Link to="todo" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">to-do</Link>
+                    <Link to="#" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">Complete</Link>
+                    <Link to="calendar" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">Calendar</Link>
             
                 </nav>
                 
