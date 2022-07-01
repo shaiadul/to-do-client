@@ -29,7 +29,7 @@ const UpdateList = () => {
         })
         .then(res => res.json())
         .then(data =>{
-            console.log('success', data);
+            // console.log('success', data);
             alert('list added successfully!!!');
             event.target.reset();
         })

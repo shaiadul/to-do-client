@@ -5,7 +5,7 @@ import down from '../../images/down-arrow-svgrepo-com.svg';
 import "./Home.css"
 
 
-const Home = () => {
+const Home = ({date}) => {
 
     const [lists, setLists] = useList([]);
     // time Refresh 
@@ -15,7 +15,7 @@ const Home = () => {
     // handlekeyDown
     const handleKeyDown = (event) => {
         const value = event.target.value
-        const data = { value }
+        const data = { value, date }
         if (event.key === 'Enter') {
             // send data to the server
             fetch('http://localhost:5000/list', {
@@ -62,7 +62,7 @@ const Home = () => {
             {/* input for takeing what to do you ! */}
             <input onKeyDown={handleKeyDown} className=' border-4 outline-none border-red-200 w-full rounded text-gray-700 font-bold font-serif py-1 px-2' type="text" placeholder='Enter Your Work Title !' />
             {/* indicator array */}
-            <img className='w-11' src={down} alt="" />
+            <img className='w-11' src={down} alt="down-array" />
             {/* latest to do data adding section */}
             {
                 lists.slice(-1).map(l => 
