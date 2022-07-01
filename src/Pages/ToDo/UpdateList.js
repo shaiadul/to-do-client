@@ -5,7 +5,7 @@ const UpdateList = () => {
     const {id} = useParams();
     const [texts, setTexts] = useState({});
     useEffect( () =>{
-        const url = `http://localhost:5000/list/${id}`;
+        const url = `https://vast-brook-93316.herokuapp.com/list/${id}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setTexts(data));
@@ -18,7 +18,7 @@ const UpdateList = () => {
         const updateList = {value};
 
         // send data to the server
-        const url = `http://localhost:5000/list/${id}`;
+        const url = `https://vast-brook-93316.herokuapp.com/list/${id}`;
         fetch(url, {
             method: 'PUT',
             headers : { 

@@ -18,7 +18,7 @@ const Home = ({date}) => {
         const data = { value, date }
         if (event.key === 'Enter') {
             // send data to the server
-            fetch('http://localhost:5000/list', {
+            fetch('https://vast-brook-93316.herokuapp.com/list', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -32,12 +32,12 @@ const Home = ({date}) => {
             window.onload = timedRefresh(1000)
         }
     }
-    // heandleDeleteProduct
+    // heandleDeleteList 
     const handleDeleteProduct = id =>{
         const proceed = window.confirm('Sir, Are you sure ?')
         if(proceed){
             console.log('deleted',id);
-            const url = `http://localhost:5000/list/${id}`;
+            const url = `https://vast-brook-93316.herokuapp.com/list/${id}`;
             fetch(url,{
                 method: 'DELETE',
                 headers : { 

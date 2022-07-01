@@ -10,7 +10,7 @@ const Todo = () => {
         const proceed = window.confirm('Sir, Are you sure ?')
         if (proceed) {
             console.log('deleted', id);
-            const url = `http://localhost:5000/list/${id}`;
+            const url = `https://vast-brook-93316.herokuapp.com/list/${id}`;
             fetch(url, {
                 method: 'DELETE',
                 headers: {
