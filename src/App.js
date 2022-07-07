@@ -6,6 +6,7 @@ import UpdateList from './Pages/ToDo/UpdateList';
 import Footer from './Pages/Footer/Footer';
 import Calendar from './Pages/Calendar/Calendar';
 import { useState } from 'react';
+import Complete from './Pages/Complete/Complete';
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="home" element={<Home date={date}/>} />
           <Route path="todo" element={<Todo/>} />
+          <Route path="completed" element={<Complete/>} />
           <Route path="/update/:id" element={<UpdateList/>}></Route>
           <Route path="calendar" element={<Calendar date={date} setDate={setDate}/>} />
       </Routes>

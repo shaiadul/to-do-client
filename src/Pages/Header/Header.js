@@ -15,7 +15,7 @@ const Header = () => {
                 <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
                     <Link to="home" className="mr-5"><img className='w-8' src={home} alt="" /></Link>
                     <Link to="todo" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">to-do</Link>
-                    <Link to="#" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">Complete</Link>
+                    <Link to="completed" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">Complete</Link>
                     <Link to="calendar" className="mr-5 text-black text-xl lg:text-2xl font-serif hover:text-red-400">Calendar</Link>
             
                 </nav>
